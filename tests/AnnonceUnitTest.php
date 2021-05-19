@@ -8,6 +8,7 @@ use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 use DateTime;
 
+
 class AnnonceUnitTest extends TestCase
 {
     public function testIsTrue(): void
@@ -19,6 +20,7 @@ class AnnonceUnitTest extends TestCase
 
         $annonce->setNom('nom')
             ->setEnVente(true)
+            ->setDateDepot($datetime)
             ->setCreatedAt($datetime)
             ->setDescription('description')
             ->setShow(true)
@@ -30,6 +32,7 @@ class AnnonceUnitTest extends TestCase
 
         $this->assertTrue($annonce->getNom() === 'nom');
         $this->assertTrue($annonce->getEnVente() === true);
+        $this->assertTrue($annonce->getDateDepot() === $datetime);
         $this->assertTrue($annonce->getCreatedAt() === $datetime);
         $this->assertTrue($annonce->getDescription() === 'description');
         $this->assertTrue($annonce->getShow() === true);
@@ -50,6 +53,7 @@ class AnnonceUnitTest extends TestCase
 
         $annonce->setNom('nom')
             ->setEnVente(true)
+            ->setDateDepot($datetime)
             ->setCreatedAt($datetime)
             ->setDescription('description')
             ->setShow(true)
@@ -61,6 +65,7 @@ class AnnonceUnitTest extends TestCase
 
         $this->assertFalse($annonce->getNom() === 'false');
         $this->assertFalse($annonce->getEnVente() === true);
+        $this->assertFalse($annonce->getDateDepot() === new DateTime());
         $this->assertFalse($annonce->getCreatedAt() === new DateTime());
         $this->assertFalse($annonce->getDescription() === 'false');
         $this->assertFalse($annonce->getShow() === true);
@@ -68,7 +73,7 @@ class AnnonceUnitTest extends TestCase
         $this->assertFalse($annonce->getFile() === 'false');
         $this->assertFalse($annonce->getPrix() === 20.20);
         $this->assertNotContains(new Categorie(), $annonce->getCategorie());
-        $this->assertFalse($annonce->getUser() ===new User());
+        $this->assertFalse($annonce->getUser() === new User());
 
 
     }
@@ -79,6 +84,7 @@ class AnnonceUnitTest extends TestCase
 
         $this->assertEmpty($annonce->getNom());
         $this->assertEmpty($annonce->getEnVente());
+        $this->assertEmpty($annonce->getDateDepot());
         $this->assertEmpty($annonce->getCreatedAt());
         $this->assertEmpty($annonce->getDescription());
         $this->assertEmpty($annonce->getShow());
