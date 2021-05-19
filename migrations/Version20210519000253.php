@@ -14,7 +14,7 @@ final class Version20210519000253 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Create Entity Categorie';
     }
 
     public function up(Schema $schema): void
