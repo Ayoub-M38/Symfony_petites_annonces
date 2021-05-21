@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-primary">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">Titre d'un article de blog plus long</h1>
+            <p class="lead my-3">Plusieurs lignes de texte qui forment le fil conducteur, informant rapidement et
+                efficacement les nouveaux lecteurs sur ce qui est le plus intéressant dans le contenu de cet
+                article.</p>
+            <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continuer la lecture...</a></p>
+        </div>
+    </div>
+    <div class="row mb-2 mt-5">
+        {% for blogpost in blogposts %}
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">Le monde</strong>
+                        <h3 class="mb-0">{{ blogpost.titre }}</h3>
+                        <time datetime="2021-05-21" class="mb-1 text-muted">Publiée
+                            le {{ blogpost.createdAt|date('d/m/y') }}</time>
+                        <p class="card-text mb-auto">{{ blogpost.contenu|u.truncate(200, '...', false) }}</p>
+                        <a href="#" class="stretched-link">Continue reading</a>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
